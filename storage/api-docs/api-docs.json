@@ -1,0 +1,738 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Liven API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/addresses": {
+            "get": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "Obter todos os endereços do usuário logado",
+                "operationId": "33ccea30443418dbab9242aa67931614",
+                "parameters": [
+                    {
+                        "name": "country",
+                        "in": "query",
+                        "description": "Filtrar por país",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "city",
+                        "in": "query",
+                        "description": "Filtrar por cidade",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "state",
+                        "in": "query",
+                        "description": "Filtrar por estado",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Lista de endereços",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            },
+                                            "user_id": {
+                                                "type": "integer",
+                                                "example": 23
+                                            },
+                                            "street": {
+                                                "type": "string",
+                                                "example": "Rua Principal 123"
+                                            },
+                                            "city": {
+                                                "type": "string",
+                                                "example": "Belo Horizonte"
+                                            },
+                                            "state": {
+                                                "type": "string",
+                                                "example": "Minas Gerais"
+                                            },
+                                            "country": {
+                                                "type": "string",
+                                                "example": "BR"
+                                            },
+                                            "postal_code": {
+                                                "type": "string",
+                                                "example": "12345"
+                                            },
+                                            "created_at": {
+                                                "type": "string",
+                                                "format": "date-time",
+                                                "example": "2024-07-16T17:30:16.000000Z"
+                                            },
+                                            "updated_at": {
+                                                "type": "string",
+                                                "format": "date-time",
+                                                "example": "2024-07-16T17:30:16.000000Z"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/address/{id}": {
+            "get": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "Obter endereço específico por ID",
+                "operationId": "15e8aa259d3fe52f40cafd873e48ba50",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do endereço",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalhes do endereço",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "user_id": {
+                                            "type": "integer",
+                                            "example": 23
+                                        },
+                                        "street": {
+                                            "type": "string",
+                                            "example": "Rua Principal 123"
+                                        },
+                                        "city": {
+                                            "type": "string",
+                                            "example": "Belo Horizonte"
+                                        },
+                                        "state": {
+                                            "type": "string",
+                                            "example": "Minas Gerais"
+                                        },
+                                        "country": {
+                                            "type": "string",
+                                            "example": "BR"
+                                        },
+                                        "postal_code": {
+                                            "type": "string",
+                                            "example": "12345"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2024-07-16T17:30:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2024-07-16T17:30:16.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "Atualizar um endereço existente",
+                "operationId": "860a97b1bd6c16542ee2058a6dde0675",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do endereço",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "street": {
+                                        "type": "string",
+                                        "example": "Rua 7 de Setembro 200"
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "example": "São Carlos"
+                                    },
+                                    "state": {
+                                        "type": "string",
+                                        "example": "São Paulo"
+                                    },
+                                    "country": {
+                                        "type": "string",
+                                        "example": "BR"
+                                    },
+                                    "postal_code": {
+                                        "type": "string",
+                                        "example": "98765"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Endereço atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "user_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "street": {
+                                            "type": "string",
+                                            "example": "Rua 7 de Setembro 200"
+                                        },
+                                        "city": {
+                                            "type": "string",
+                                            "example": "São Carlos"
+                                        },
+                                        "state": {
+                                            "type": "string",
+                                            "example": "São Paulo"
+                                        },
+                                        "country": {
+                                            "type": "string",
+                                            "example": "BR"
+                                        },
+                                        "postal_code": {
+                                            "type": "string",
+                                            "example": "98765"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2024-07-16T17:30:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2024-07-16T17:30:16.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "Deletar um endereço",
+                "operationId": "cff8047280efe379a37b97be80684b49",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do endereço",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Endereço deletado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Liven API informs: Address deleted successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/address": {
+            "post": {
+                "tags": [
+                    "Address"
+                ],
+                "summary": "Criar um novo endereço",
+                "operationId": "9cdfa09147ff073087e2090b6e3f3c4e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": 23
+                                    },
+                                    "street": {
+                                        "type": "string",
+                                        "example": "Avenida Brasil 456"
+                                    },
+                                    "city": {
+                                        "type": "string",
+                                        "example": "Rio de Janeiro"
+                                    },
+                                    "state": {
+                                        "type": "string",
+                                        "example": "Rio de Janeiro"
+                                    },
+                                    "country": {
+                                        "type": "string",
+                                        "example": "BR"
+                                    },
+                                    "postal_code": {
+                                        "type": "string",
+                                        "example": "12345"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Endereço criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 23
+                                        },
+                                        "user_id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        },
+                                        "street": {
+                                            "type": "string",
+                                            "example": "Avenida Brasil 456"
+                                        },
+                                        "city": {
+                                            "type": "string",
+                                            "example": "Rio de Janeiro"
+                                        },
+                                        "state": {
+                                            "type": "string",
+                                            "example": "Rio de Janeiro"
+                                        },
+                                        "country": {
+                                            "type": "string",
+                                            "example": "BR"
+                                        },
+                                        "postal_code": {
+                                            "type": "string",
+                                            "example": "12345"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2024-07-16T17:30:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2024-07-16T17:30:16.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Registrar um novo usuário",
+                "operationId": "8a56853624e025573120a09a4c75d468",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Lucas Antunes"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "lucas@antunes.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "password123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Usuário registrado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Liven API informs: User registered successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logar um usuário",
+                "operationId": "a3b306d14572d1f4bd6c064b3233e7b8",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "lucas@antunes.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "password123"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Usuário logado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "token": {
+                                            "type": "string",
+                                            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Unauthorized"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Obter dados do usuário logado",
+                "operationId": "9cd1cee912e0176094a7ec83cc9b432f",
+                "responses": {
+                    "200": {
+                        "description": "Dados do usuário logado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 23
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Joana da Silva"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "joana@silva.com"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2024-07-16T17:30:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2024-07-16T17:30:16.000000Z"
+                                        },
+                                        "addresses": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Atualizar dados do usuário logado",
+                "operationId": "fd4f39f7820d3f3cbc259c5b30fed830",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Antônio da Silva"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "antonio@silva.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "newpassword12345"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Dados do usuário logado atualizados",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 23
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Antônio da Silva"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "antonio@silva.com"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2024-07-16T17:30:16.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "format": "date-time",
+                                            "example": "2024-07-16T17:30:16.000000Z"
+                                        },
+                                        "addresses": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Deletar a conta do usuário logado",
+                "operationId": "db0c8ea1c902ed078a87cf1fa6497994",
+                "responses": {
+                    "200": {
+                        "description": "Liven API informs: User deleted successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Address",
+            "description": "Endpoints da API para Address"
+        },
+        {
+            "name": "Auth",
+            "description": "Endpoints da API para Authentication"
+        },
+        {
+            "name": "User",
+            "description": "Endpoints da API para User"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT",
+                "description": "Cole o token JWT no campo abaixo"
+            }
+        }
+    },
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ]
+}
