@@ -18,17 +18,15 @@ class AddressController extends Controller
         $user = Auth::user();
         $query = $user->addresses();
 
-        if ($request->has('country')) {
-            $query->where('country', $request->country);
+        $filters = ['country', 'city', 'state'];
+
+        // Iterar sobre os filtros e aplicar à query
+        foreach ($filters as $filter) {
+            if ($request->has($filter)) {
+                $query->where($filter, $request->input($filter));
+            }
         }
 
-        if ($request->has('city')) {
-            $query->where('city', $request->city);
-        }
-        if ($request->has('state')) {
-            $query->where('state', $request->state);
-        }
-        
         $addresses = $query->get();
         return response()->json($addresses);
     }
