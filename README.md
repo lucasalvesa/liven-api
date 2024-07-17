@@ -1,66 +1,140 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<p align="center"><a href="https://liven.tech" target="_blank"><img src="https://liven.tech/_next/image?url=%2Fimages%2Flogo-2x.png&w=256&q=75" width="300" alt="Liven Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Liven API
 
-## About Laravel
+A **Liven API** é uma aplicação RESTful desenvolvida com o framework Laravel, que permite o cadastro e controle de usuários e seus endereços. A API implementa autenticação usando JWT (JSON Web Tokens) e oferece endpoints para criação, leitura, atualização e exclusão (CRUD) de usuários e endereços. 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Funcionalidades
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+✔️ **Autenticação JWT**: Permite login seguro e gera tokens JWT para autenticação.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+✔️ **CRUD de Usuários**: Criação, leitura, atualização e exclusão de contas de usuários.
 
-## Learning Laravel
+✔️ **CRUD de Endereços**: Gerenciamento dos endereços associados aos usuários, incluindo filtragem por parâmetros específicos.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+✔️ **Documentação Swagger**: Documentação detalhada da API usando Swagger, acessível via interface web.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Tecnologias Utilizadas
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- [**Laravel**](https://laravel.com/docs/11.x): Framework PHP para desenvolvimento web.
+- [**darkaonline/l5-swagger**](https://github.com/DarkaOnLine/L5-Swagger): Pacote para integração do Swagger com Laravel, permitindo a geração de documentação da API.
+- [**PHP-Open-Source-Saver/jwt-auth**](https://github.com/PHP-Open-Source-Saver/jwt-auth): Biblioteca para implementação de autenticação via JWT (JSON Web Tokens) no Laravel.
 
-## Laravel Sponsors
+## Requisitos
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Antes de começar, certifique-se de ter os seguintes componentes instalados no seu ambiente:
 
-### Premium Partners
+- **Composer** (para gerenciar dependências PHP)
+- **PHP 8.1** ou superior
+- **XAMPP** (opcional) - Ferramenta para gerenciar o MySQL. Alternativamente, você pode usar outras soluções como WAMP, Laragon ou configurar manualmente o MySQL.
+- **MySQL Workbench** (opcional) - Ferramenta gráfica para administração do MySQL. Alternativamente, você pode usar o MySQL Shell ou qualquer outro cliente MySQL de sua preferência.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Instalação 🛠️
 
-## Contributing
+### Passo 1: Clonar o Repositório
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Clone o projeto para sua máquina local:
+```bash
+git clone https://github.com/lucasalvesa/liven-api.git
+```
+Acesse a pasta baixada:
+```bash
+cd liven-api
+```
 
-## Code of Conduct
+### Passo 2: Configurar o Ambiente
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Renomeie o arquivo `.env.example` para `.env`
+Edite o arquivo .env e configure as variáveis de ambiente, especialmente as configurações do banco de dados:
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=nome_do_seu_banco_de_dados
+DB_USERNAME=seu_usuario
+DB_PASSWORD=sua_senha
+```
 
-## Security Vulnerabilities
+### Passo 3: Ativar o MySQL
+Se estiver usando o XAMPP, abra-o e inicie o serviço MySQL. Se estiver usando outra solução, inicie o serviço de acordo com sua configuração.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Passo 4: Instalar as Dependências
+Execute o Composer para instalar todas as dependências do projeto:
+```
+composer install
+```
 
-## License
+### Passo 5: Gerar o JWT Secret
+Execute o comando para gerar a chave secreta JWT:
+```
+php artisan jwt:secret
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Passo 6: Executar as Migrações
+Execute as migrações para criar as tabelas no banco de dados:
+```
+php artisan migrate
+```
+**Obs.:** Se o banco de dados especificado no arquivo `.env` ainda não tiver sido criado, o Laravel oferecerá a opção de criá-lo automaticamente com o nome fornecido.
+
+### Passo 7: Gerar a Key do Aplicativo
+Execute o comando para gerar a chave da aplicação Laravel:
+```
+php artisan key:generate
+```
+**Obs.:** Caso pule esse passo, no momento em que iniciar o servidor uma tela no seu localhost será exibida com a mensagem `Your app key is missing` . Aqui você pode apenas clicar no botão contendo o texto `GENERATE APP KEY` e pronto.
+
+### Passo 8: Iniciar o Servidor
+Inicie o servidor local do Laravel:
+```
+php artisan serve
+```
+A aplicação estará disponível em `http://localhost:8000` .
+
+## Endpoints 🌐 
+
+### Autenticação
+- Registrar: POST /api/register
+- Login: POST /api/login
+
+### Usuários
+- Obter Usuário Logado: GET /api/user
+- Atualizar Usuário: PUT /api/user
+- Deletar Usuário: DELETE /api/user
+
+### Endereços
+- Listar Endereços: GET /api/addresses
+    - Parâmetros opcionais: country, city, state
+- Obter Endereço por ID: GET /api/address/{id}
+- Criar Endereço: POST /api/address
+- Atualizar Endereço: PUT /api/address/{id}
+- Deletar Endereço: DELETE /api/address/{id}
+
+## Documentação da API 📝
+
+A documentação completa da API está disponível via Swagger. Após iniciar o servidor, acesse:
+```
+http://localhost:8000/api/documentation
+```
+
+## Testes Automatizados 🧪
+
+O projeto inclui testes automatizados para garantir a qualidade do código. Para executar os testes, use:
+```
+php artisan test
+```
+
+## Contribuição
+
+A metodologia utilizada para contribuição prevê:
+- Criação de branches no formato `descrição-do-que-esta-sendo-feito`, sempre começando com um verbo no infinitivo.
+- Abertura de Pull Requests com um breve descritivo do que será introduzido. Casos de testes quando necessário.
+- Commits respeitando a organização dos arquivos. Exemplos semânticos das mensagens adotadas:
+```JS
+"fix: Fix bug on onboarding screen"
+"feat: Add new functionality to the datatable"
+"chore: Change text"
+"refactor: Improve code regarding loop repetition"
+"revert: Remove deprecated piece of code"
+```
+[Referência](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716)
