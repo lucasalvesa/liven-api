@@ -45,12 +45,12 @@ cd liven-api
 ### Passo 2: Configurar o Ambiente
 
 Renomeie o arquivo `.env.example` para `.env`
-Edite o arquivo .env e configure as variáveis de ambiente, especialmente as configurações do banco de dados:
+Edite o arquivo .env e configure as variáveis de ambiente relacionadas ao banco de dados (a partir da linha 11 do arquivo):
 ```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=nome_do_seu_banco_de_dados
+DB_DATABASE=liven
 DB_USERNAME=seu_usuario
 DB_PASSWORD=sua_senha
 ```
