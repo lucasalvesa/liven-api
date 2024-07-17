@@ -116,6 +116,8 @@ A documentação completa da API está disponível via Swagger. Após iniciar o 
 ```
 http://localhost:8000/api/documentation
 ```
+![image](https://github.com/user-attachments/assets/df7f398b-62d1-43c5-b94e-ef67f352d99b)
+
 
 ## Testes Automatizados 🧪
 
